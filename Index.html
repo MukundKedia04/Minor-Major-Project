@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LoadLink</title>
+    <link rel="icon" type="image/x-icon" href="img/Fevicon.png">
+    <!--API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAmnNecdS3XGUrQkJRxt-_FbE-jihp-eDk &libraries=places"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body> 
+    <nav class="navbar">
+        <div class="logo">
+            <img id="logo" src="img/Logo LL(Black).png" alt="LoadLink Logo" />
+        </div>
+        <!-- <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </div>
+            </label>
+        </div> -->
+
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="#Register">Register</a>
+            <a href="#contact">Contact Us</a>
+            <div class="auth-buttons">
+                <button type="button" onclick="window.location.href='login.html' ">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="page1">
+
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Your Journey Begins Here</h1>
+            <p>Experience seamless travel with our reliable transportation service. Book your ride now and enjoy comfortable, safe journeys to your destination.</p>
+        </div>
+     <div class="map-container">
+        <div class="location-search">
+            <div class="search-container">
+                <div class="pickup-container">
+                    <i class="fas fa-circle pickup-icon"></i>
+                    <input type="text" class="location-input" id="pickup-input" placeholder="Enter pickup location">
+                </div>
+                <div class="dropoff-container">
+                    <i class="fas fa-map-marker-alt dropoff-icon"></i>
+                    <input type="text" class="location-input" id="dropoff-input" placeholder="Enter drop-off location">
+                </div>
+                <button class="check-price-btn">
+                    <!-- Check Price -->
+                     LogIn
+                </button>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="img/3857477-Photoroom.png" alt="Black Image">
+        </div>
+    </div>
+    </div>
+</div>
+
+<div id="page2">
+    <h1 class="section-title">Types Of Trucks</h1>
+    <section class="cards-section">
+        <div class="card">
+            <div class="card-image">
+                <img src="img/ImgCard/vecteezy_mockup-delivery-pickup_13829744.jpg" alt="Black Image">
+            </div>
+            <div class="card-content">
+                <h3>Mini Truck <br>(4-Wheeler)</h3>
+                <p>Perfect for small businesses and local deliveries. Ideal for navigating narrow streets and urban areas. Capacity up to 1.5 tons. Best for furniture, home shifting, and small commercial goods.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image">
+                <img src="img/ImgCard/Large jpeg & png_Truck_4_A.jpg" alt="Black Image">
+            </div>
+            <div class="card-content">
+                <h3>Medium Truck<br> (6-Wheeler)</h3>
+                <p>Versatile medium-sized transport solution. Suitable for intercity logistics and medium cargo. Capacity up to 4 tons. Ideal for retail distribution, construction materials, and medium commercial loads.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image">
+                <img src="img/ImgCard/vecteezy_semitrailer-truck-with-white-trailer-cargo-transportation_11340814.jpg" alt="Black Image">
+            </div>
+            <div class="card-content">
+                <h3>Heavy Truck<br> (10-Wheeler)</h3>
+                <p>Heavy-duty transportation for large cargo. Perfect for long-distance and bulk materials. Capacity up to 16 tons. Best for industrial goods, bulk commodities, and large-scale logistics operations.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div id="page3">
+    <div id="about">
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="img/6195000-Photoroom.png" alt="LoadLink Services">
+            </div>
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p class="tagline">Connecting You with Reliable Transportation Solutions</p>
+                <div class="about-text">
+                    <p>LoadLink is your trusted partner in logistics and transportation services. We specialize in connecting customers with a wide range of trucking solutions, from small deliveries to large-scale transportation needs.</p>
+                    
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li>24/7 Transportation Support</li>
+                        <li>Real-time Tracking</li>
+                        <li>Flexible Booking Options</li>
+                        <li>Verified Drivers & Vehicles</li>
+                        <li>Secure Payment System</li>
+                    </ul>
+
+                    <h3>Why Choose LoadLink?</h3>
+                    <ul>
+                        <li>Transparent Pricing</li>
+                        <li>Professional Service</li>
+                        <li>Nationwide Coverage</li>
+                        <li>Timely Delivery</li>
+                        <li>Customer Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+
+<div id="page4">
+
+<div id="Register">
+    <section class="captain-section">
+        <div class="captain-container">
+            <div class="captain-content">
+                <h2>Become a Captain</h2>
+                <h3>Join our network.</h3>
+                <p class="captain-description">
+                    Drive with LoadLink and be a leader. Maximize earnings, faster and easier than ever before! 
+                    You are just a click away.
+                </p>
+                <ul class="benefits-list">
+                    <li>Higher Earnings</li>
+                    <li>Regular Payments</li>
+                    <li>24/7 Support</li>
+                    <li>Flexible Schedule</li>
+                    <li>Zero Commission for First Order</li>
+                </ul>
+                <button class="register-btn" id="registerButton">Register as Captain</button>
+            </div>
+            <div class="captain-image">
+                <img src="img/20945983-Photoroom.png" alt="Become a LoadLink Captain">
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+<div id="page5">
+<section id="contact" class="contact-section">
+    <div class="contact-image">
+        <img src="img/4220713-Photoroom.png" alt="Contact Us" />
+    </div>
+        <div class="contact-container">
+            <div class="contact-content">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or need assistance, feel free to reach out to us!</p>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="Script.js"></script>
+</body>
+</html>
