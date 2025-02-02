@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoadLink</title>
+    <link rel="icon" type="image/x-icon" href="img/Fevicon.png">
+    <!-- <title>Subscription Plans</title> -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            padding: 20px;
+            color: white;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #bbb;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 18px;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+            color: white;
+        }
+
+        .sidebar a.active {
+            background-color: #555;
+            color: white;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 270px;
+            width: calc(100% - 270px);
+            padding: 30px;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            color: #333;
+            font-size: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+        }
+
+        .subscription-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .plan-card {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card.active {
+            background-color: #e0e0e0;
+            border: 2px solid #333;
+        }
+
+        .plan-info {
+            flex: 1;
+        }
+
+        .plan-name {
+            font-size: 22px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .plan-price {
+            font-size: 24px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .plan-benefits ul {
+            list-style-type: none;
+            padding: 0;
+            color: #666;
+        }
+
+        .plan-benefits li {
+            margin-bottom: 5px;
+        }
+
+        .button {
+            background-color: #333;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        .button.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .plan-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .plan-selector {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Truck Owner Dashboard</h2>
+    <a href="#" class="active">Subscription Plans</a>
+    <a href="Dashboard.html">Dashboard</a>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <header>
+        Subscription Plans
+    </header>
+
+    <div class="container">
+        <!-- Current Plan Section -->
+        <div class="subscription-section" id="currentPlanSection">
+            <h2>Current Plan</h2>
+            <div class="plan-card active" id="currentPlanCard">
+                <div class="plan-info">
+                    <div class="plan-name" id="currentPlanName">Premium Plan</div>
+                    <div class="plan-price" id="currentPlanPrice">$100/month</div>
+                    <div class="plan-benefits" id="currentPlanBenefits">
+                        <ul>
+                            <li>Unlimited bookings</li>
+                            <li>Priority support</li>
+                            <li>Advanced analytics</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="button" id="upgradeButton">Upgrade Plan</button>
+            </div>
+        </div>
+
+        <!-- Upgrade Plan Section -->
+        <div class="subscription-section">
+            <h2>Upgrade Plan</h2>
+            <div class="plan-selector">
+                <div class="plan-card" id="basicPlanCard">
+                    <div class="plan-info">
+                        <div class="plan-name">Basic Plan</div>
+                        <div class="plan-price">$50/month</div>
+                        <div class="plan-benefits">
+                            <ul>
+                                <li>Up to 10 bookings/month</li>
+                                <li>Standard support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="button" id="selectBasicPlanButton">Select</button>
+                </div>
+
+                <div class="plan-card" id="premiumPlanCard">
+                    <div class="plan-info">
+                        <div class="plan-name">Premium Plan</div>
+                        <div class="plan-price">$100/month</div>
+                        <div class="plan-benefits">
+                            <ul>
+                                <li>Unlimited bookings</li>
+                                <li>Priority support</li>
+                                <li>Advanced analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="button disabled" id="selectPremiumPlanButton" disabled>Selected</button>
+                </div>
+
+                <div class="plan-card" id="enterprisePlanCard">
+                    <div class="plan-info">
+                        <div class="plan-name">Enterprise Plan</div>
+                        <div class="plan-price">$200/month</div>
+                        <div class="plan-benefits">
+                            <ul>
+                                <li>Custom features</li>
+                                <li>Dedicated account manager</li>
+                                <li>24/7 support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="button" id="selectEnterprisePlanButton">Select</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan Benefits Section -->
+        <div class="subscription-section">
+            <h2>Plan Benefits</h2>
+            <ul>
+                <li>Customizable pricing plans for all levels</li>
+                <li>Flexible billing options</li>
+                <li>Access to exclusive features and support</li>
+                <li>Easy upgrade/downgrade process</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Mock data for subscription plans
+    const plans = {
+        currentPlan: {
+            name: 'Premium Plan',
+            price: '$100/month',
+            benefits: [
+                'Unlimited bookings',
+                'Priority support',
+                'Advanced analytics'
+            ]
+        },
+        upgradePlans: [
+            {
+                name: 'Basic Plan',
+                price: '$50/month',
+                benefits: ['Up to 10 bookings/month', 'Standard support']
+            },
+            {
+                name: 'Premium Plan',
+                price: '$100/month',
+                benefits: ['Unlimited bookings', 'Priority support', 'Advanced analytics']
+            },
+            {
+                name: 'Enterprise Plan',
+                price: '$200/month',
+                benefits: ['Custom features', 'Dedicated account manager', '24/7 support']
+            }
+        ]
+    };
+
+    // Function to update the current plan section with dynamic data
+    function updateCurrentPlan() {
+        document.getElementById('currentPlanName').innerText = plans.currentPlan.name;
+        document.getElementById('currentPlanPrice').innerText = plans.currentPlan.price;
+        document.getElementById('currentPlanBenefits').innerHTML = `<ul>
+            ${plans.currentPlan.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+        </ul>`;
+    }
+
+    // Function to select an upgrade plan
+    function selectPlan(planName) {
+        // Find selected plan
+        const selectedPlan = plans.upgradePlans.find(plan => plan.name === planName);
+
+        // Update the current plan to the selected one
+        plans.currentPlan = selectedPlan;
+
+        // Update the display for the current plan and available plans
+        updateCurrentPlan();
+
+        // Disable the "Select" buttons and highlight the selected one
+        document.querySelectorAll('.plan-card').forEach(card => {
+            const button = card.querySelector('button');
+           
+        })
+      }

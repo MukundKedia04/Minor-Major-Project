@@ -1,0 +1,1288 @@
+   *{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   }
+   /* Dark/Light Mode Variables */
+:root {
+    --primary-bg: #ffffff;
+    --secondary-bg: #f5f5f5;
+    --text-color: #333333;
+    --nav-bg: #333;
+    --card-bg: #e1e1e1;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --heading-color: #222222;
+    --paragraph-color: #444444;
+    --nav-text: #ffffff;
+    --card-heading: #333333;
+    --card-text: #666666;
+    --placeholder-text: #888888;
+    --link-color: #333333;
+    --link-hover: #666666;
+    --button-bg: #333333;
+    --button-text: #ffffff;
+    --button-hover-bg: #ffffff;
+    --button-hover-text: #333333;
+    --nav-hover: #f5f5dc; /* Cream color for light mode hover */
+}
+
+[data-theme="dark"] {
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #252525;
+    --text-color: #ffffff;
+    --nav-bg: #ffffff;
+    --card-bg: #252525;
+    --shadow: rgba(255, 255, 255, 0.1);
+    --heading-color: #ffffff;
+    --paragraph-color: #dddddd;
+    --nav-text: #000000;
+    --card-heading: #ffffff;
+    --card-text: #cccccc;
+    --placeholder-text: #aaaaaa;
+    --link-color: #ffffff;
+    --link-hover: #cccccc;
+    --button-bg: #000000;
+    --button-text: #ffffff;
+    --button-hover-bg: #000000;
+    --button-hover-text: #ffffff;
+    --nav-hover: #333333; /* Dark black for dark mode hover */
+}
+/*Buttons for LogIn and SignUp*/   
+   .auth-buttons {
+        margin-left: auto;
+        margin-right: 50px;
+        display: flex;
+        gap: 10px;
+    }
+    
+    .auth-buttons button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    /*.login-btn {
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+    }
+    
+    .login-btn:hover {
+        background-color: white;
+        color: #333;
+    }*/
+    
+    .login-btn {
+        background-color:var(--button-bg);
+        color: var(--button-text);
+    }
+    
+    .login-btn:hover {
+        background-color: var(--button-hover-bg);
+        color: var(--button-hover-text);
+    }
+
+    @media screen and (min-width: 768px) {
+        .auth-buttons {
+            flex-direction: row;
+            margin-top: 0;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 40px;
+            padding: 0;
+        }
+    }
+/*Navigation bar*/
+.navbar {
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--nav-hover);
+}
+
+.logo {
+    color: white;
+    margin-right: 40px;
+    font-size: 1.2rem;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+    .logo {
+        margin-right: 0;
+        z-index: 4; 
+    }
+    
+}
+
+/* Hamburger Menu */
+
+.hamburger {
+    display: none; 
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 100;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Animation */
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Navigation Styles */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 10px 0;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    .auth-buttons button {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/*Header text for 1st Section */
+.hero-section {
+    position: relative;
+    background-color: var(--primary-bg);
+    padding-top: 150px;
+    padding-bottom: 10px;
+}
+.hero-text {
+    position: relative;
+    z-index: 2;
+    color: #333;
+    max-width: 600px;
+    margin-left: 170px;
+    padding-bottom: 2px;
+    margin-bottom: 30px;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-text {
+        margin: 20px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+}
+
+
+/*Header text for 1st Section */
+.hero-section {
+    position: relative;
+    background-color: var(--primary-bg);
+    padding-top: 150px;
+    padding-bottom: 10px;
+}
+.hero-text {
+    position: relative;
+    z-index: 2;
+    color: #333;
+    max-width: 600px;
+    margin-left: 170px;
+    padding-bottom: 2px;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-text {
+        margin: 20px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+}
+
+/*Location*/
+
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    margin-top: 20px;
+}
+
+
+/* Make sure the map is visible */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.location-search {
+    position: absolute;
+    top: 30%;
+    left: 250px;
+    transform: translateY(-50%);
+    width: 300px;
+    z-index: 2;
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+
+.search-container::before {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 35px;
+    height: calc(63% - 70px);
+    width: 5px;
+    background-color: #ddd;
+    z-index: 1;
+}
+
+.pickup-container,
+.dropoff-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-hover);
+    padding: 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.pickup-container:hover,
+.dropoff-container:hover {
+    background-color: #ffc5c5;
+}
+
+.location-input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    outline: none;
+}
+
+.pickup-icon,
+.dropoff-icon {
+    font-size: 14px;
+    z-index: 3;
+}
+
+.pickup-icon {
+    color: #2ecc71;
+}
+
+.dropoff-icon {
+    color: #e74c3c;
+}
+
+@media screen and (max-width: 768px) {
+    .location-search {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 280px;
+        max-width: 350px;
+        padding: 12px;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #000000;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        z-index: 999;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .hamburger {
+        display: block;
+        position: fixed;
+        right: 20px;
+        top: 15px;
+    }
+}
+
+.image-container {
+    position: absolute;
+    top: 10%;
+    right: 30px;
+    transform: translateY(-50%);
+    width: 750px;
+    height: 500px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1200px) {
+    .image-container {
+        display: none; 
+    }
+}
+/*Check Price Btn */
+.check-price-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.check-price-btn i {
+    font-size: 18px;
+}
+
+.check-price-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode styles */
+[data-theme="dark"] .check-price-btn {
+    background-color: #45a049;
+}
+
+[data-theme="dark"] .check-price-btn:hover {
+    background-color: #3d8b41;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .check-price-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+
+
+/*Card For Types of Trucks*/
+
+.section-title {
+    text-align: center;
+    margin: 20px 0 60px 0;
+    color: var(--heading-color);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Responsive adjustment */
+@media screen and (max-width: 768px) {
+    .section-title {
+        margin: 40px 0 30px 0;
+        font-size: 1.8rem;
+    }
+}
+
+#page2 h1{
+    font-size: 50px;
+}
+
+.cards-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 20px;
+    margin-top: -10px;
+    background-color: var(--primary-bg);
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 15px;
+    width: 280px;
+    box-shadow: 0 2px 10px var(--shadow);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transform: scale(1.2);
+    background-color: #a5a9a5a4;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.233); 
+}
+
+.card-image {
+    width: 100%;
+    height: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-image img {
+    transform: scale(1);
+}
+
+.card-content {
+    padding: 10px 5px;
+}
+
+.card-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    color: #666;
+    font-size: 0.7rem;
+    line-height: 1.4;
+}
+
+/* Responsive design */
+@media screen and (max-width: 968px) {
+    .cards-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .card-image {
+        height: 180px;
+    }
+}
+
+
+
+/* Theme Switch Styles */
+.theme-switch-wrapper {
+    position: fixed;
+    right: 190px;
+    top: 15px;
+    z-index: 1001;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+}
+
+.slider i {
+    color: #ffffff;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    transition: .4s;
+}
+
+.fa-sun {
+    right: 10px;
+}
+
+.fa-moon {
+    left: 10px;
+}
+
+input:checked + .slider {
+    background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Update existing styles with variables */
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--nav-bg);
+}
+
+.card {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+/* Add transitions for smooth theme switching */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Update mobile styles */
+@media screen and (max-width: 768px) {
+    .theme-switch-wrapper {
+        right: 70px;
+    }
+}
+
+/* Update Hero Text */
+.hero-text h1 {
+    color: var(--heading-color);
+}
+
+.hero-text p {
+    color: var(--paragraph-color);
+}
+
+/* Update Navigation Text */
+.logo h1 {
+    color: var(--nav-text);
+}
+
+.nav-links a {
+    color: var(--nav-text);
+}
+
+.nav-links a:hover {
+    color: var(--button-hover-text);
+}
+
+/* Update Card Text */
+.card-content h3 {
+    color: var(--card-heading);
+}
+
+.card-content p {
+    color: var(--card-text);
+}
+
+/* Update Input Text */
+.location-input {
+    color: var(--text-color);
+}
+
+.location-input::placeholder {
+    color: var(--placeholder-text);
+}
+
+/* Update Auth Button Text */
+.login-btn {
+    color: var(--nav-text);
+}
+
+.signup-btn {
+    color: var(--primary-bg);
+}
+
+/* Update Section Headers */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+}
+
+/* Update Paragraph Text */
+p {
+    color: var(--paragraph-color);
+}
+
+/* Update Link Text */
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+/* Add smooth transitions for text */
+* {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+/* Mobile Text Adjustments */
+@media screen and (max-width: 768px) {
+    .nav-links a {
+        color: var(--nav-text);
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem;
+        color: var(--heading-color);
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+        color: var(--paragraph-color);
+    }
+    
+    .card-content h3 {
+        font-size: 1.2rem;
+        color: var(--card-heading);
+    }
+}
+
+/* Navigation Links */
+.nav-links a {
+    color: var(--nav-text);
+}
+
+.nav-links a:hover {
+    color: var(--button-hover-text);
+}
+
+/* Auth Buttons */
+.signup-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+.login-btn {
+    background-color: transparent;
+    border: 2px solid var(--nav-text);
+    color: var(--nav-text);
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+/* Hamburger Menu - Update color for dark mode */
+.hamburger .bar {
+    background-color: var(--nav-text);
+}
+
+
+
+/* Mobile Menu Adjustments */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        background-color: var(--nav-bg);
+    }
+    
+    .nav-links a {
+        color: var(--nav-text);
+    }
+}
+
+/* Cards Section */
+[data-theme="dark"] .cards-section {
+    background-color: var(--primary-bg);
+}
+
+[data-theme="dark"] .card {
+    background-color: #252525;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Location Search */
+[data-theme="dark"] .location-search {
+    background-color: #252525;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Section */
+[data-theme="dark"] .hero-section {
+    background-color: var(--primary-bg);
+}
+
+/* Map Container */
+[data-theme="dark"] .map-container {
+    background-color: var(--primary-bg);
+}
+
+
+
+/* Search Inputs */
+[data-theme="dark"] .pickup-container,
+[data-theme="dark"] .dropoff-container {
+    background-color: #333333; /* Slightly lighter for input fields */
+}
+
+[data-theme="dark"] .location-input {
+    color: #ffffff;
+    background-color: #333333;
+}
+
+[data-theme="dark"] .location-input::placeholder {
+    color: #aaaaaa;
+}
+
+/* Any Additional Sections */
+[data-theme="dark"] .additional-section {
+    background-color: #252525;
+}
+
+/* Ensure smooth transitions */
+* {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+
+/*About Section*/
+.about-section {
+    padding: 80px 20px;
+    background-color: var(--primary-bg);
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.about-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.about-content h2 {
+    color: var(--heading-color);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.tagline {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.about-text p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.about-text h3 {
+    color: var(--heading-color);
+    font-size: 1.3rem;
+    margin: 25px 0 15px 0;
+}
+
+.about-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-text ul li {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.about-text ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 968px) {
+    .about-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-image {
+        width: 100%;
+        max-height: 300px;
+    }
+
+    .about-content h2 {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-section {
+        padding: 40px 20px;
+    }
+
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Adjust based on your navbar height */
+}
+
+/* Update navigation link styles */
+.nav-links a {
+    color: var(--nav-text);
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--nav-hover);
+}
+
+/* Optional: Add underline effect on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--nav-hover);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/*Owner Register*/
+.captain-section {
+    padding: 80px 20px;
+    background-color: var(--secondary-bg);
+}
+
+.captain-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.captain-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.captain-content h2 {
+    color: var(--heading-color);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.captain-content h3 {
+    color: var(--heading-color);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.captain-description {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.benefits-list li {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.benefits-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.captain-image {
+    flex: 1;
+    overflow: hidden;
+}
+
+.captain-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.register-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-btn:hover {
+    background-color: #2f6e33;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 968px) {
+    .captain-container {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .captain-image {
+        width: 100%;
+        max-height: 300px;
+    }
+
+    .captain-content h2 {
+        font-size: 2rem;
+    }
+
+    .captain-content h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .captain-section {
+        padding: 40px 20px;
+    }
+
+    .captain-content {
+        text-align: center;
+    }
+
+    .benefits-list li {
+        text-align: left;
+    }
+
+    .register-btn {
+        width: 100%;
+    }
+}
+
+.contact-section {
+    padding: 60px 20px;
+    background-color: var(--primary-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.contact-image {
+    flex: 1;
+    max-width: 350px;
+}
+
+.contact-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.contact-content {
+    flex: 2;
+    text-align: center;
+}
+
+.contact-content h2 {
+    color: var(--heading-color);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: var(--heading-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .contact-container h2 {
+        font-size: 1.8rem;
+    }
+
+    .submit-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .contact-image {
+        max-width: 200px;
+    }
+}
+
+/* Update Navigation Bar Styles for Dark Mode */
+[data-theme="dark"] .navbar {
+    background-color: #333; /* Dark background for the navbar */
+}
+
+[data-theme="dark"] .nav-links a {
+    color: var(--nav-text); /* Ensure text color is appropriate for dark mode */
+}
+
+[data-theme="dark"] .nav-links a:hover {
+    color: var(--button-hover-text); /* Change hover color for better visibility */
+}
+
+/* Update Logo Color for Dark Mode */
+[data-theme="dark"] .logo img {
+    content: url('img/Logo LL(White).png'); /* Use a white logo for dark mode */
+}
+
+

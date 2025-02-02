@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoadLink</title>
+  <link rel="icon" type="image/x-icon" href="img/Fevicon.png">
+  <!-- <title>Profile & Settings</title> -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 250px;
+      background-color: #333;
+      color: white;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 15px 0;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      background-color: white;
+      margin: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      border-color: #333;
+      outline: none;
+    }
+
+    .form-group button {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #555;
+    }
+
+    .notification-settings,
+    .payment-settings,
+    .help-support {
+      margin-top: 20px;
+    }
+
+    .notification-settings label,
+    .payment-settings label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .help-support a {
+      color: #333;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .help-support a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="Dashboard.html">Dashboard</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Profile & Settings</h1>
+
+    <!-- Update Profile Details -->
+    <div class="section">
+      <h2>Update Profile Details</h2>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" value="John Doe">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" value="johndoe@example.com">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter new password">
+      </div>
+      <div class="form-group">
+        <button onclick="updateProfile()">Save Changes</button>
+      </div>
+    </div>
+
+    <!-- Notification Settings -->
+    <div class="section notification-settings">
+      <h2>Notification Settings</h2>
+      <label>
+        <input type="checkbox" id="emailNotifications" checked> Email Notifications
+      </label>
+      <label>
+        <input type="checkbox" id="smsNotifications"> SMS Notifications
+      </label>
+      <label>
+        <input type="checkbox" id="pushNotifications" checked> Push Notifications
+      </label>
+      <div class="form-group">
+        <button onclick="saveNotificationSettings()">Save Settings</button>
+      </div>
+    </div>
+
+    <!-- Payment Settings -->
+    <div class="section payment-settings">
+      <h2>Payment Settings</h2>
+      <label>
+        <input type="radio" name="paymentMethod" value="creditCard" checked> Credit Card
+      </label>
+      <label>
+        <input type="radio" name="paymentMethod" value="paypal"> PayPal
+      </label>
+      <label>
+        <input type="radio" name="paymentMethod" value="bankTransfer"> Bank Transfer
+      </label>
+      <div class="form-group">
+        <button onclick="savePaymentSettings()">Save Settings</button>
+      </div>
+    </div>
+
+    <!-- Help & Support -->
+    <div class="section help-support">
+      <h2>Help & Support</h2>
+      <a href="#contact">Contact Support</a>
+      <a href="#faq">FAQ</a>
+      <a href="#feedback">Submit Feedback</a>
+    </div>
+  </div>
+
+  <script>
+    function updateProfile() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (!name || !email) {
+        alert('Name and Email are required.');
+        return;
+      }
+
+      alert('Profile updated successfully!');
+      console.log('Updated Profile:', { name, email, password });
+    }
+
+    function saveNotificationSettings() {
+      const emailNotifications = document.getElementById('emailNotifications').checked;
+      const smsNotifications = document.getElementById('smsNotifications').checked;
+      const pushNotifications = document.getElementById('pushNotifications').checked;
+
+      alert('Notification settings saved!');
+      console.log('Notification Settings:', { emailNotifications, smsNotifications, pushNotifications });
+    }
+
+    function savePaymentSettings() {
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+      alert('Payment settings saved!');
+      console.log('Payment Method:', paymentMethod);
+    }
+  </script>
+</body>
+</html>

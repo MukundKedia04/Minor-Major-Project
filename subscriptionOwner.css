@@ -1,0 +1,148 @@
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f5f5f5;
+  --text-color: #333333;
+  --nav-bg: #333333;
+  --card-bg: #e1e1e1;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --heading-color: #222222;
+  --paragraph-color: #444444;
+  --nav-text: #ffffff;
+  --card-heading: #333333;
+  --card-text: #666666;
+  --placeholder-text: #888888;
+  --link-color: #333333;
+  --link-hover: #666666;
+  --button-bg: #333333;
+  --button-text: #ffffff;
+  --button-hover-bg: #ffffff;
+  --button-hover-text: #333333;
+  --nav-hover: #f5f5dc; /* Cream color for light mode hover */
+  --sidebar-width: 250px; /* Default sidebar width */
+}
+
+[data-theme="dark"] {
+  --primary-bg: #1a1a1a;
+  --secondary-bg: #252525;
+  --text-color: #ffffff;
+  --nav-bg: #ffffff;
+  --card-bg: #252525;
+  --shadow: rgba(255, 255, 255, 0.1);
+  --heading-color: #ffffff;
+  --paragraph-color: #dddddd;
+  --nav-text: #000000;
+  --card-heading: #ffffff;
+  --card-text: #cccccc;
+  --placeholder-text: #aaaaaa;
+  --link-color: #ffffff;
+  --link-hover: #cccccc;
+  --button-bg: #000000;
+  --button-text: #ffffff;
+  --button-hover-bg: #000000;
+  --button-hover-text: #ffffff;
+  --nav-hover: #333333; /* Dark black for dark mode hover */
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-bg);
+  display: flex;
+}
+
+.subscription-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+}
+
+h1 {
+  text-align: center;
+  color: var(--placeholder-text);
+}
+
+.plans {
+  display: flex;
+  justify-content: center; /* Center the plans */
+  gap: 20px; /* Space between cards */
+  flex-wrap: wrap; /* Allow wrapping of cards */
+  padding: 20px 0; /* Added padding */
+  width: 100%; /* Added width */
+  overflow-x: hidden; /* Remove horizontal scrollbar */
+}
+
+.plan {
+  border: 1px solid #252525;
+  border-radius: 8px;
+  padding: 20px;
+  flex: 0 0 auto; /* Prevent shrinking and growing, keep the plans at their natural width */
+  width: 300px; /* Fixed width for each plan */
+  height: 500px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+  text-align: center;
+}
+
+.plan:hover {
+  transform: scale(1.05); /* Scale up on hover */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.plan h2 {
+  color: var(--text-color);
+}
+
+.price {
+  font-size: 16px;
+  color: var(--text-color);
+  margin: 10px 0;
+}
+.slogan{
+  color: blueviolet;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+li {
+  margin: 8px 0;
+  color: var(--text-color);
+}
+
+button {
+  margin-top: 100px;
+  padding: 10px 20px;
+  background-color: var(--link-hover);
+  color: var(--button-bg);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--nav-hover);
+}
+
+.tag {
+  font-size: 12px;
+  background-color: var(--card-heading);
+  color: white;
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+/* Media query for responsive design */
+@media (max-width: 600px) {
+  .plans {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards */
+  }
+
+  .plan {
+    width: 90%; /* Make cards take up most of the width */
+    margin-bottom: 20px; /* Space between cards */
+  }
+}

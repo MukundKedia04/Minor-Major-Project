@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoadLink</title>
+    <link rel="icon" type="image/x-icon" href="img/Fevicon.png">
+    <!-- <title>Truck Management</title> -->
+    <style>
+        /* White and Grey Theme */
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #333;
+            border-right: 1px solid #ddd;
+            width: 250px;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #fff;
+            padding: 12px;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Truck List Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .status.available {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status.unavailable {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Buttons */
+        .button, .edit-btn, .delete-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .button:hover, .edit-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Add Truck Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            margin: 10% auto;
+            width: 40%;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Search Input */
+        #searchTruck {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .sidebar-nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            padding: 15px;
+            font-size: 1em;
+            display: block;
+            color: #555;
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="Dashboard.html">Dashboard</a></li>
+                <li><a href="/truck-management">Truck List</a></li>
+                <li><a href="#" id="openModal">Add New Truck</a></li>
+                <li><a href="/truck-availability">Truck Availability</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h2>Truck Management</h2>
+
+        <!-- Search Box -->
+        <input type="text" id="searchTruck" placeholder="Search Truck by Model..." onkeyup="searchTruck()">
+
+        <!-- Truck List Table -->
+        <section class="truck-list">
+            <h3>All Trucks</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Model</th>
+                        <th>Status</th>
+                        <th>Availability</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="truckTable">
+                    <tr>
+                        <td>#001</td>
+                        <td>Volvo FH16</td>
+                        <td><span class="status available">Available</span></td>
+                        <td>Yes</td>
+                        <td><button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Add Truck Modal -->
+        <div id="addTruckModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h3>Add New Truck</h3>
+                <label>Truck Model:</label>
+                <input type="text" id="truckModel" placeholder="Enter truck model" required>
+
+                <label>Status:</label>
+                <select id="truckStatus">
+                    <option value="available">Available</option>
+                    <option value="unavailable">On Trip</option>
+                </select>
+
+                <label>Availability:</label>
+                <select id="truckAvailability">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <button class="button" id="saveTruck">Save Truck</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let truckId = 2;
+
+            const modal = document.getElementById('addTruckModal');
+            const openModalBtn = document.getElementById('openModal');
+            const closeModalBtn = document.querySelector('.close-btn');
+
+            openModalBtn.addEventListener('click', () => modal.style.display = 'block');
+            closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
+
+            document.getElementById('saveTruck').addEventListener('click', function () {
+                const model = document.getElementById('truckModel').value.trim();
+                const status = document.getElementById('truckStatus').value;
+                const availability = document.getElementById('truckAvailability').value;
+
+                if (model === '') {
+                    alert('Please enter the truck model.');
+                    return;
+                }
+
+                const statusClass = status === 'available' ? 'status available' : 'status unavailable';
+                const table = document.getElementById('truckTable');
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>#00${truckId++}</td>
+                    <td>${model}</td>
+                    <td><span class="${statusClass}">${status === 'available' ? 'Available' : 'On Trip'}</span></td>
+                    <td>${availability}</td>
+                    <td><button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button></td>
+                `;
+                table.appendChild(row);
+                modal.style.display = 'none';
+
+                row.querySelector('.delete-btn').addEventListener('click', function () {
+                    if (confirm('Are you sure you want to delete this truck?')) {
+                        row.remove();
+                    }
+                });
+            });
+
+            window.searchTruck = function () {
+                let input = document.getElementById('searchTruck').value.toLowerCase();
+                let rows = document.querySelectorAll('#truckTable tr');
+                rows.forEach(row => {
+                    let model = row.cells[1].innerText.toLowerCase();
+                    row.style.display = model.includes(input) ? '' : 'none';
+                });
+            };
+        });
+    </script>
+
+</body>
+</html>

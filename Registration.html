@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LoadLink</title>
+    <link rel="icon" type="image/x-icon" href="img/Fevicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="Registration.css">
+
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="back-button">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Transporter/Truck Owner Registration</h2>
+        <form id="register-form" action="Registration.php" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="fullName" placeholder="Enter your name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="phone">Phone Number:</label>
+            <!--<input type="tel" id="phone" placeholder="Enter your phone number" required>-->
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="role">Select Role:</label>
+            <select id="role" name="role" required>
+                <option value="Transporter">Transporter</option>
+                <option value="Truck Owner">Truck Owner</option>
+            </select>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="create a password" required>
+
+            <label for="Confirm_password">Confirm Password</label>
+            <input type="password" id="Confirm_password" name="Confirm_password" placeholder="Confirm your password" required>
+            <button type="submit" id="register-button">Register</button>
+        </form>
+    </div>
+    <script src="Registration.js"></script>
+    <script src="theme.js"></script>
+    
+</body>
+</html>

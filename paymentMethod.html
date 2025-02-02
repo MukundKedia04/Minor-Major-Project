@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LoadLink</title>
+    <link rel="icon" type="image/x-icon" href="img/Fevicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <link rel="stylesheet" href="paymentMethod.css">
+</head>
+<body>
+    <div class="container">
+        <div id="paymentForm" class="payment-form">
+            <div class="header">
+                <h1>Payment Details</h1>
+               <svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+            </div>
+
+            <div class="tabs">
+                <button id="cardTab" class="tab-btn active" onclick="switchTab('card')">Card Payment</button>
+                <button id="upiTab" class="tab-btn" onclick="switchTab('upi')">UPI</button>
+                <button id="netBankingTab" class="tab-btn" onclick="switchTab('netBanking')">Net Banking</button>
+            </div>
+
+            <!-- Card Payment Form -->
+            <form id="cardForm" class="form-section" action="process_payment.php" method="POST">
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <div class="input-icon">
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                            <line x1="2" x2="22" y1="10" y2="10"></line>
+                        </svg>
+                    </div>
+                    <p id="cardNumberError" class="error hidden">Please enter a valid card number</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Cardholder Name</label>
+                    <input type="text" id="cardName" placeholder="John Doe" required>
+                    <p id="cardNameError" class="error hidden">Please enter the cardholder name</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Expiry Date</label>
+                        <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                        <p id="expiryError" class="error hidden">Please enter a valid expiry date</p>
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="password" id="cvv" placeholder="123" maxlength="4" required>
+                        <p id="cvvError" class="error hidden">Please enter a valid CVV</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Pay Now</button>
+            </form>
+
+            <!-- UPI Form -->
+            <form id="upiForm" class="form-section hidden">
+                <div class="form-group">
+                    <label>UPI ID</label>
+                    <div class="input-icon">
+                        <input type="text" id="upiId" placeholder="username@upi" required>
+                        <svg class="upi-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                            <line x1="18" y1="9" x2="18" y2="15"></line>
+                        </svg>
+                    </div>
+                    <p id="upiError" class="error hidden">Please enter a valid UPI ID</p>
+                </div>
+                <button type="submit" class="submit-btn">Pay with UPI</button>
+            </form>
+
+            <!-- Net Banking Form -->
+            <form id="netBankingForm" class="form-section hidden">
+                <div class="form-group">
+                    <label>Select Bank</label>
+                    <select id="bankSelect" required>
+                        <option value="">Select your bank</option>
+                        <option value="sbi">State Bank of India</option>
+                        <option value="hdfc">HDFC Bank</option>
+                        <option value="icici">ICICI Bank</option>
+                        <option value="axis">Axis Bank</option>
+                        <option value="kotak">Kotak Mahindra Bank</option>
+                        <option value="yes">Yes Bank</option>
+                    </select>
+                    <p id="bankError" class="error hidden">Please select a bank</p>
+                </div>
+                <button type="submit" class="submit-btn">Continue to Net Banking</button>
+            </form>
+
+            <p class="security-text">Your payment information is secure and encrypted</p>
+        </div>
+
+        <div id="successMessage" class="success-message hidden">
+            <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <h2>Payment Successful!</h2>
+            <p>Your payment has been processed successfully.</p>
+            <button onclick="resetForms()" class="submit-btn">Ok</button>
+        </div>
+    </div>
+    <script src="theme.js"></script>
+    <script src="PaymentMethod.js"></script>
+</body>
+</html>

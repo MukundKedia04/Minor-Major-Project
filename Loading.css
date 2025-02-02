@@ -1,0 +1,128 @@
+/* General Reset */
+
+   /* Dark/Light Mode Variables */
+   :root {
+    --primary-bg: #ffffff;
+    --secondary-bg: #f5f5f5;
+    --text-color: #333333;
+    --nav-bg: #333333;
+    --card-bg: #e1e1e1;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --heading-color: #222222;
+    --paragraph-color: #444444;
+    --nav-text: #ffffff;
+    --card-heading: #333333;
+    --card-text: #666666;
+    --placeholder-text: #888888;
+    --link-color: #333333;
+    --link-hover: #666666;
+    --button-bg: #333333;
+    --button-text: #ffffff;
+    --button-hover-bg: #ffffff;
+    --button-hover-text: #333333;
+    --nav-hover: #f5f5dc; /* Cream color for light mode hover */
+}
+
+[data-theme="dark"] {
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #252525;
+    --text-color: #ffffff;
+    --nav-bg: #ffffff;
+    --card-bg: #252525;
+    --shadow: rgba(255, 255, 255, 0.1);
+    --heading-color: #ffffff;
+    --paragraph-color: #dddddd;
+    --nav-text: #000000;
+    --card-heading: #ffffff;
+    --card-text: #cccccc;
+    --placeholder-text: #aaaaaa;
+    --link-color: #ffffff;
+    --link-hover: #cccccc;
+    --button-bg: #000000;
+    --button-text: #ffffff;
+    --button-hover-bg: #000000;
+    --button-hover-text: #ffffff;
+    --nav-hover: #333333; /* Dark black for dark mode hover */
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+}
+nav {
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--nav-bg);
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+nav a {
+  
+  margin: 0 25px;
+  text-decoration: none;
+  color: var(--nav-hover);
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--link-hover);
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+form input, form textarea, form select, form button {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid var(--primary-bg);
+  background-color: var(--secondary-bg);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+form textarea {
+  resize: none;
+}
+
+form button {
+  background-color: var(--button-bg);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+form button:hover {
+  background-color: var(--link-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+      flex-direction: column;
+  }
+
+  nav a {
+      margin: 10px 0;
+  }
+}
